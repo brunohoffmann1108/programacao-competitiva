@@ -13,7 +13,7 @@ int main(){
         getline(cin, sequencia);
         // Guarda o primeiro caractere para fins de comparação posteriormente.
         char anterior = sequencia[0]; 
-        // j = 1 para começar do segundo, já que temos o primeiro na linha 14.
+        // j = 1 para começar do segundo, já que temos o primeiro na linha anterior.
         int j = 1; 
         // Itera até encontrar a primeira diferença entre dois caracteres seguidos (requisito para menor substring possível).
         while(sequencia[j] != '\0' && sequencia[j] == anterior){
@@ -51,6 +51,7 @@ int main(){
         }
 
         if(menor_sbstr == 200001){
+            // Se nenhuma substring válida foi encontrada, o problema pede que retorne um 0.
             menor_sbstr = 0;
         }
         cout << menor_sbstr << endl;
