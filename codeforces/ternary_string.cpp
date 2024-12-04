@@ -1,4 +1,4 @@
-// Este código resolve o problema 1354B do Codeforces.
+// Este código resolve o problema 1354B (Ternary string) do Codeforces.
 
 #include <iostream>
 #include <string>

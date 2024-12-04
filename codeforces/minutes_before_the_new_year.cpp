@@ -1,4 +1,4 @@
-// Este código resolve o problema 1283A do Codeforces.
+// Este código resolve o problema 1283A (Minutes before the new year) do Codeforces.
 
 #include <iostream>
 using namespace std;

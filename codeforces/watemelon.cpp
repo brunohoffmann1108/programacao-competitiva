@@ -1,4 +1,4 @@
-// Este código resolve o problema 4A do Codeforces.
+// Este código resolve o problema 4A (Watermelon) do Codeforces.
 
 #include <iostream>
 using namespace std;
