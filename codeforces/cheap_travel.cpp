@@ -1,3 +1,4 @@
+// Este código resolve o problema 466A (Cheap Travel) do Codeforces.
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -12,33 +13,24 @@ int main(){
 
     // Número total de viagens dividido pelo número de viagens que um ticket_m cobre.
     int divisao = viagens / viagens_ticket_m;
+    // Restante da divisão acima.
     int resto = viagens % viagens_ticket_m;
 
-    int menor_preco = 0;
-    int preco_com_m = 0;
-    int preco_com_uma = 0;
-    if(divisao > 0 && resto == 0){
-        preco_com_m = preco_ticket_m * divisao;
-        preco_com_uma = preco_uma_viagem * viagens;
-        menor_preco = min(preco_com_m, preco_com_uma);
-    }
-    else if(divisao > 0 && resto > 0){
-        preco_com_m = preco_ticket_m * divisao;
-        preco_com_uma = preco_uma_viagem * viagens_ticket_m * divisao;
-        menor_preco = min(preco_com_m, preco_com_uma);
-        int restante = resto * preco_uma_viagem;
-        if(restante < preco_ticket_m){
-            menor_preco += restante;
-        }
-        else{
-            menor_preco += preco_ticket_m;
-        }
-    }
-    else{
-        preco_com_uma = resto * preco_uma_viagem;
-        menor_preco = min(preco_com_uma, preco_ticket_m);
-    }
+    // Calcula o preço com tickets_m para a quantidade possível, calculada anteriormente.
+    int preco_com_m = preco_ticket_m * divisao;
+    // Calcula a mesma coisa mas com o preço de tickets de viagem unitária.
+    int preco_com_uma = preco_uma_viagem * viagens_ticket_m * divisao;
+    int menor_preco = min(preco_com_m, preco_com_uma);
 
+    // Caso haja um resto (divisão por ticket_m não foi exata), calcula se é melhor:
+    if(resto > 0){
+        // 1. Comprar mais um ticket_m, mesmo que sobrem viagens que não serão utilizadas.
+        preco_com_m = preco_ticket_m;
+        // 2. Comprar o restante com tickets de viagens unitárias.
+        preco_com_uma = resto * preco_uma_viagem;
+        menor_preco += min(preco_com_m, preco_com_uma); 
+    }
+    
     cout << menor_preco << endl;
 
 
